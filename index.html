@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div id="app">
+            <h1> {{ title }} </h1>
+            <ul>
+                <li v-for="fruit of fruits" >
+                    {{ fruit.name }} - {{ fruit.qty }}
+                    <span v-if="fruit.qty === 0" > Sin stock </span>
+                    
+                </li>
+            </ul>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="01.js"></script>
+    </body>
+</html>
