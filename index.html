@@ -6,18 +6,55 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </head>
     <body>
-        <div id="app">
+        <div id="app" class="container mt-5">
+            <div :class="[ 'p-3', 'text-white', background]">
+                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis necessitatibus cupiditate dolorum ducimus pariatur totam debitis rerum doloremque dolorem molestiae, facilis dolores aliquam, proviclass="bg-danger"dent aut fugiat ipsam iure quo quae. </p>
+            </div>
+            <input type="text" class="form-control my-3" v-model="background">
+
+            <div class="text-white p-3" :class="{ 'bg-info' : color, 'bg-success' : !color }" >
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit adipisci aliquam nam maxime excepturi molestiae modi! Recusandae possimus aspernatur unde voluptatem ut nulla, aperiam repellendus accusamus ad, iste fuga modi.</p>
+            </div>
+
+            <button class="btn btn-primary mt-2" @click="color = !color" >Cambiar color</button>
+
+            <hr>
+                <h3> {{ message }} </h3>
+                <h4> Inverted: {{ inverted }} </h4>
+                <input type="text" class="form-control" v-model="message">
+                <button class="btn btn-primary" @click="counter++">+</button>
+                <button class="btn btn-danger" @click="counter--">-</button>
+                <h3> {{ counter }} </h3>
+                <div class="progress">
+                    <div 
+                        class="progress-bar"
+                        :class="color2"
+                        role="progressbar" 
+                        aria-valuenow="0" 
+                        :style="{'width': counter+'%'}" 
+                        aria-valuemin="0" 
+                        aria-valuemax="100"> {{ counter }} % </div>
+                </div>
+            <hr>
             <h1> {{ title }} </h1>
+
+            <input class="form-control" type="text" v-model="newFruit" @keyup.enter="addFruit">
+            <button class="btn btn-primary" @click="addFruit">Agregar</button>
+
             <ul>
-                <li v-for="fruit of fruits" >
-                    {{ fruit.name }} - {{ fruit.qty }}
+                <li v-for="fruit of fruits">
+                    <input type="number" v-model.number="fruit.qty">
+                    {{ fruit.name }}
+                    <button class="btn btn-primary" @click="fruit.qty++">+</button>
                     <span v-if="fruit.qty === 0" > Sin stock </span>
                     
                 </li>
             </ul>
+
+            <h4>Total: {{ sumFruits }} </h4>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
